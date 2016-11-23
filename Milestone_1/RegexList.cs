@@ -51,14 +51,14 @@ namespace Milestone_1
 			regexHT.Add (@"^SMOOSH .*", "String Concatenation");  // m1 done
 
 			// control flow structures
-			regexHT.Add (@"^O RLY?$", "Start of IF Block");
-			regexHT.Add (@"^YA RLY$", "IF Clause");
-			regexHT.Add (@"^NO WAI$", "ELSE Clause");
-			regexHT.Add (@"^WTF?$", "Start of CASE Block");
-			regexHT.Add (@"^OMG", "CASE Clause");
-			regexHT.Add (@"^GTFO$", "BREAK Clause");
-			regexHT.Add (@"^OMGWTF$", "DEFAULT Clause");
-			regexHT.Add (@"^OIC$", "End of Control Block");
+			regexHT.Add (@"^O RLY\?$", "Start of IF Block"); //m1 done
+			regexHT.Add (@"^YA RLY$", "IF Clause"); // m1 done
+			regexHT.Add (@"^NO WAI$", "ELSE Clause"); // m1 done
+			regexHT.Add (@"^WTF\?$", "Start of CASE Block"); // m1 done
+			regexHT.Add (@"^OMG$", "CASE Clause"); // m1 done
+			regexHT.Add (@"^GTFO$", "BREAK Clause"); // m1 done
+			regexHT.Add (@"^OMGWTF$", "DEFAULT Clause"); // m1 done
+			regexHT.Add (@"^OIC$", "End of Control Block"); // m1 done
 
 			// argument separator
 			regexHT.Add (@"^AN$", "Argument Separator"); // m1 done
@@ -71,16 +71,16 @@ namespace Milestone_1
 			regexHT.Add (@"^MOD OF$", "Modulo Division"); // m1 done
 
 			// comparative operations
-			regexHT.Add (@"^BIGGR OF", "Max");
-			regexHT.Add (@"^SMALLR OF", "Min");
-			regexHT.Add (@"^BOTH OF", "Boolean AND");
-			regexHT.Add (@"^EITHER OF", "Boolean OR");
-			regexHT.Add (@"^WON OF", "Boolean XOR");
-			regexHT.Add (@"^NOT", "Boolean NOT");
-			regexHT.Add (@"^ANY OF", "N-Arity Boolean OR");
-			regexHT.Add (@"^ALL OF", "N-Arity Boolean AND");
-			regexHT.Add (@"^BOTH SAEM", "Equality");
-			regexHT.Add (@"^DIFFRINT", "Inequality"); 
+			regexHT.Add ("^BIGGR OF$", "Max"); // m1 done
+			regexHT.Add (@"^SMALLR OF$", "Min"); // m1 done
+			regexHT.Add (@"^BOTH OF$", "Boolean AND"); // m1 done
+			regexHT.Add (@"^EITHER OF$", "Boolean OR"); // m1 done
+			regexHT.Add (@"^WON OF$", "Boolean XOR"); // m1 done
+			regexHT.Add (@"^NOT$", "Boolean NOT"); // m1 done
+			regexHT.Add (@"^ANY OF$", "N-Arity Boolean OR"); // m1 done
+			regexHT.Add (@"^ALL OF$", "N-Arity Boolean AND"); // m1 done
+			regexHT.Add (@"^BOTH SAEM$", "Equality"); // m1 done
+			regexHT.Add (@"^DIFFRINT$", "Inequality");  // m1 done
 
 			// variables
 			regexHT.Add ("^\".*\"$", "YARN"); // m1 done
