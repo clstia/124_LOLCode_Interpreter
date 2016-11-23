@@ -71,16 +71,16 @@ namespace Milestone_1
 			regexHT.Add (@"^MOD OF$", "Modulo Division"); // m1 done
 
 			// comparative operations
-			regexHT.Add ("^BIGGR OF$", "Max"); // m1 done
-			regexHT.Add (@"^SMALLR OF$", "Min"); // m1 done
-			regexHT.Add (@"^BOTH OF$", "Boolean AND"); // m1 done
-			regexHT.Add (@"^EITHER OF$", "Boolean OR"); // m1 done
-			regexHT.Add (@"^WON OF$", "Boolean XOR"); // m1 done
-			regexHT.Add (@"^NOT$", "Boolean NOT"); // m1 done
-			regexHT.Add (@"^ANY OF$", "N-Arity Boolean OR"); // m1 done
-			regexHT.Add (@"^ALL OF$", "N-Arity Boolean AND"); // m1 done
-			regexHT.Add (@"^BOTH SAEM$", "Equality"); // m1 done
-			regexHT.Add (@"^DIFFRINT$", "Inequality");  // m1 done
+			regexHT.Add ("^BIGGR OF$", "Max"); // m1 done. need to detect arguments
+			regexHT.Add (@"^SMALLR OF$", "Min"); // m1 done . need to detect arguments
+			regexHT.Add (@"^BOTH OF$", "Boolean AND"); // m1 done . need to detect arguments
+			regexHT.Add (@"^EITHER OF$", "Boolean OR"); // m1 done . need to detect arguments
+			regexHT.Add (@"^WON OF$", "Boolean XOR"); // m1 done . need to detect arguments
+			regexHT.Add (@"^NOT$", "Boolean NOT"); // m1 done . need to detect arguments
+			regexHT.Add (@"^ANY OF$", "N-Arity Boolean OR"); // m1 done . need to detect arguments
+			regexHT.Add (@"^ALL OF$", "N-Arity Boolean AND"); // m1 done . need to detect arguments
+			regexHT.Add (@"^BOTH SAEM$", "Equality"); // m1 done . need to detect arguments
+			regexHT.Add (@"^DIFFRINT$", "Inequality");  // m1 done . need to detect arguments
 
 			// variables
 			regexHT.Add ("^\".*\"$", "YARN"); // m1 done

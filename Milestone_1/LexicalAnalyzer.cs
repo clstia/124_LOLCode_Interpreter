@@ -160,7 +160,7 @@ namespace Milestone_1
 							break;
 						}
 					}
-					if (this.checkMLC ()) break;
+					if (this.checkMLC ()) continue;
 				}
 			}
 		}
