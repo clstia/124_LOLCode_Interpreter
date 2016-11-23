@@ -62,11 +62,13 @@ namespace Milestone_1
 								commentString = null;
 								break;
 							case "Variable Declaration":
+								if (this.checkMLC ()) break;
 								lexemeModel.AppendValues ("I HAS A", regexHT[pattern].ToString ());
 								String[] temp = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp[3], "NOOB");
 								break;
 							case "YARN":
+								if (this.checkMLC ()) break;
 								char[] quote = { '"' };
 								current = current.TrimStart (quote);
 								current = current.TrimEnd (quote);
@@ -75,11 +77,13 @@ namespace Milestone_1
 								lexemeModel.AppendValues ("\"", "String Delimiter");
 								break;
 							case "Assignment Statement":
+								if (this.checkMLC ()) break;
 								String[] temp2 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp2[0], "NOOB");
 								lexemeModel.AppendValues ("R", regexHT[pattern].ToString ());
 								break;
 							case "String Concatenation":
+								if (this.checkMLC ()) break;
 								String[] temp3 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp3 [0], regexHT[pattern].ToString ());
 								for (int i = 1; i < temp3.Length; i++) {
@@ -103,11 +107,14 @@ namespace Milestone_1
 								}
 								break;
 							case "Standard Input":
+								if (this.checkMLC ()) break;
 								String[] temp4 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp4[0], regexHT[pattern].ToString ());
 								lexemeModel.AppendValues (temp4[1], "NOOB");
 								break;
 							case "Standard Output":
+								if (this.checkMLC ())
+									break;
 								String[] temp5 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp5 [0], regexHT [pattern].ToString ());
 								for (int i = 1; i < temp5.Length; i++) {
@@ -129,6 +136,20 @@ namespace Milestone_1
 										}
 									}
 								}
+								break;
+							case "Max":
+							case "Min":
+							case "Boolean AND":
+							case "Boolean OR":
+							case "Boolean XOR":
+							case "Boolean NOT":
+							case "N-Arity Boolean AND":
+							case "N-Arity Boolean OR":
+							case "Equality":
+							case "Inequality":
+								if (this.checkMLC ()) break;
+								lexemeModel.AppendValues ("IT", "Implicit Variable");
+								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								break;
 							default:
 								if (this.checkMLC ()) break;
