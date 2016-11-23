@@ -1,0 +1,6 @@
+/home/clstia/Projects/Milestone_1/Milestone_1/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/clstia/Projects/Milestone_1/Milestone_1/obj/x86/Debug/Milestone_1.gtk-gui.gui.stetic
+/home/clstia/Projects/Milestone_1/Milestone_1/bin/Debug/Milestone_1.exe.mdb
+/home/clstia/Projects/Milestone_1/Milestone_1/bin/Debug/Milestone_1.exe
+/home/clstia/Projects/Milestone_1/Milestone_1/obj/x86/Debug/Milestone_1.exe
+/home/clstia/Projects/Milestone_1/Milestone_1/obj/x86/Debug/Milestone_1.exe.mdb
