@@ -1,1 +1,27 @@
-﻿<Properties StartupItem="Milestone_1/Milestone_1.csproj" />
+﻿<Properties StartupItem="Milestone_1/Milestone_1.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Milestone_1/LexicalAnalyzer.cs">
+    <Files>
+      <File FileName="Milestone_1/Program.cs" Line="1" Column="1" />
+      <File FileName="Milestone_1/MainWindow.cs" Line="40" Column="1" />
+      <File FileName="Milestone_1/RegexList.cs" Line="83" Column="85" />
+      <File FileName="Milestone_1/LexicalAnalyzer.cs" Line="75" Column="57" />
+      <File FileName="Regex Toolkit" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Milestone_1" expanded="True">
+            <Node name="Milestone_1" expanded="True">
+              <Node name="LexicalAnalyzer.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
