@@ -6,7 +6,7 @@ namespace Milestone_1
 {
 	public class LexicalAnalyzer
 	{
-		private Hashtable regexHT, varHT;
+		private Hashtable regexHT, varHT, reservedHT;
 		private Gtk.ListStore lexemeModel;
 		private Stack delimiterStack = new Stack ();
 		private String current = null, commentString = null;
@@ -16,6 +16,7 @@ namespace Milestone_1
 			Milestone_1.RegexList list = new Milestone_1.RegexList ();
 			this.regexHT = list.initRegexHT ();
 			this.varHT = list.initVarHT ();
+			this.reservedHT = list.initReservedHT ();
 			lexemeModel = new Gtk.ListStore (typeof(String), typeof(String));
 		}
 
@@ -34,7 +35,7 @@ namespace Milestone_1
 						current = word.Trim();
 					} 
 					else {
-						current = String.Concat (current, " ", word);
+						current = String.Concat (current, " ", word).Trim();
 					}
 
 					Console.WriteLine (current); 
@@ -75,12 +76,6 @@ namespace Milestone_1
 								lexemeModel.AppendValues ("\"", "String Delimiter");
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								lexemeModel.AppendValues ("\"", "String Delimiter");
-								break;
-							case "Assignment Statement":
-								if (this.checkMLC ()) break;
-								String[] temp2 = current.Split (space_delimiter);
-								lexemeModel.AppendValues (temp2[0], "NOOB");
-								lexemeModel.AppendValues ("R", regexHT[pattern].ToString ());
 								break;
 							case "String Concatenation":
 								if (this.checkMLC ()) break;
@@ -150,6 +145,22 @@ namespace Milestone_1
 								if (this.checkMLC ()) break;
 								lexemeModel.AppendValues ("IT", "Implicit Variable");
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
+								break;
+							case "NOOB":
+								if (this.checkMLC ())
+									break;
+								int counter = 0;
+								foreach (String reserved in reservedHT.Keys) {
+									if (Regex.IsMatch (current, reserved)) {
+										break;
+									} else {
+										counter++;
+									}
+								}
+								if (counter == reservedHT.Count)
+									lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
+								else
+									continue;
 								break;
 							default:
 								if (this.checkMLC ()) break;
