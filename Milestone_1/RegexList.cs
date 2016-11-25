@@ -5,13 +5,26 @@ namespace Milestone_1
 {
 	public class RegexList : Hashtable
 	{
-		public Hashtable regexHT;
-		public Hashtable varHT;
-		public Hashtable reservedHT;
+		public Hashtable regexHT, varHT, reservedHT, syntaxHT;
 
 		public RegexList ()
 		{
 			
+		}
+
+		public Hashtable initSyntaxHT ()
+		{
+			syntaxHT = new Hashtable ();
+
+			// I HAS A
+			syntaxHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]*$", "NOOB");
+			syntaxHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ (WIN|FAIL)", "TROOF");
+			syntaxHT.Add ("^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ \".*\"$", "YARN");
+			syntaxHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ (-)?[0-9]+$", "NUMBR");
+			syntaxHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ (-)?[0-9]+\.[0-9]+$", "NUMBAR"); 
+			// add init with expression
+
+			return syntaxHT;
 		}
 
 		public Hashtable initReservedHT ()

@@ -86,6 +86,8 @@ public partial class MainWindow: Gtk.Window
 		Milestone_1.LexicalAnalyzer fillLexemes = new Milestone_1.LexicalAnalyzer ();
 		fillLexemes.fillLexemes (codeTextView.Buffer.Text.Split (delimiter));
 		lexemeTreeView.Model = fillLexemes.getModel ();
+		Milestone_1.SyntaxAnalyzer analyzeSyntax = new Milestone_1.SyntaxAnalyzer (codeTextView.Buffer.Text.Split (delimiter), this, this.consoleTextView);
+		analyzeSyntax.syntaxAnalyzer ();
+		symbolTreeView.Model = analyzeSyntax.getSymbolModel ();
 	}
-
 }
