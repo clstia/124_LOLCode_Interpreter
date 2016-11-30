@@ -1,13 +1,21 @@
 ﻿<Properties StartupItem="Milestone_1/Milestone_1.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Milestone_1/SyntaxAnalyzer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Milestone_1/MainWindow.cs">
     <Files>
       <File FileName="Milestone_1/Program.cs" Line="1" Column="1" />
-      <File FileName="Milestone_1/MainWindow.cs" Line="1" Column="1" />
+      <File FileName="Milestone_1/MainWindow.cs" Line="17" Column="23" />
       <File FileName="Milestone_1/RegexList.cs" Line="1" Column="1" />
-      <File FileName="Milestone_1/SyntaxAnalyzer.cs" Line="57" Column="4" />
-      <File FileName="Milestone_1/LexicalAnalyzer.cs" Line="1" Column="1" />
+      <File FileName="Milestone_1/LexicalAnalyzer.cs" Line="275" Column="19" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Milestone_1" expanded="True">
+            <Node name="Milestone_1" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

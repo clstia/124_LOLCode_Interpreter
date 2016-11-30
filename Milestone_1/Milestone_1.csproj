@@ -71,6 +71,7 @@
     <Compile Include="RegexList.cs" />
     <Compile Include="LexicalAnalyzer.cs" />
     <Compile Include="SyntaxAnalyzer.cs" />
+    <Compile Include="SyntaxAnalyzer_v2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

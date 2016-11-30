@@ -43,16 +43,16 @@ namespace Milestone_1
 			this.allInits ();
 
 			// go through all visible
-			this.allVisible ();
+			//this.allVisible ();
 
 			// go through all gimmeh
-			this.allGimmeh ();
+			//this.allGimmeh ();
 
 			// all arithmetic
-			this.allMath ();
+			//this.allMath ();
 
 			// all if-else
-			this.ifElse ();
+			//this.ifElse ();
 
 
 

@@ -160,7 +160,8 @@ namespace Milestone_1
 								// if a multi-line comment is declared before hand
 								if (this.checkMLC ()) 
 									break;
-								
+
+								// this will get every argument for VISIBLE
 								String[] temp5 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp5 [0], regexHT [pattern].ToString ());
 								for (int i = 1; i < temp5.Length; i++) {
