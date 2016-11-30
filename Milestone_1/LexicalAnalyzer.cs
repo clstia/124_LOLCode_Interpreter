@@ -9,7 +9,7 @@ namespace Milestone_1
 		private Hashtable regexHT, varHT, reservedHT;
 		private Gtk.ListStore lexemeModel;
 		private Stack delimiterStack = new Stack ();
-		private String current = null, commentString = null;
+		private String current = null, commentString = "";
 
 		public LexicalAnalyzer ()
 		{
@@ -46,30 +46,63 @@ namespace Milestone_1
 						if (Regex.IsMatch (current, pattern)) {
 							switch (regexHT [pattern].ToString ()) {
 							case "Single Line Comment":
-								if (this.checkMLC ()) break;
-								String[] comment = current.Split (space_delimiter);
-								lexemeModel.AppendValues (comment [0], regexHT [pattern].ToString ());
-								lexemeModel.AppendValues (comment [1], "Comment String");
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
+									break;
+								// push single line comment flag to stack
+								delimiterStack.Push ("slc");
+								// append lexeme for single line comment
+								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								break;
 							case "Start of Block Comment":
-								if (this.checkMLC ()) break;
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// push block comment flag to stack
 								delimiterStack.Push ("sbc");
+								// append lexeme for start of block comment
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								break;
 							case "End of Block Comment":
-								lexemeModel.AppendValues (commentString, "Comment Content");
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+
+								// if comment string is not blank, append comment string
+								if (commentString.Trim ().Length != 0)
+									lexemeModel.AppendValues (commentString, "Comment Content");
+								// append lexeme
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
+								// remove flag
 								delimiterStack.Pop ();
+								// clear comment string
 								commentString = null;
 								break;
 							case "Variable Declaration":
-								if (this.checkMLC ()) break;
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
+									break;
+								// append lexeme
 								lexemeModel.AppendValues ("I HAS A", regexHT[pattern].ToString ());
+								// append variable name
 								String[] temp = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp[3], "NOOB");
 								break;
 							case "YARN":
-								if (this.checkMLC ()) break;
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
+									break;
+
+								// append string lexeme
 								char[] quote = { '"' };
 								current = current.TrimStart (quote);
 								current = current.TrimEnd (quote);
@@ -78,7 +111,14 @@ namespace Milestone_1
 								lexemeModel.AppendValues ("\"", "String Delimiter");
 								break;
 							case "String Concatenation":
-								if (this.checkMLC ()) break;
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
+									break;
+
+								// concatenate the arguments of smoosh into one value
 								String[] temp3 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp3 [0], regexHT[pattern].ToString ());
 								for (int i = 1; i < temp3.Length; i++) {
@@ -102,14 +142,25 @@ namespace Milestone_1
 								}
 								break;
 							case "Standard Input":
-								if (this.checkMLC ()) break;
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
+									break;
+								
 								String[] temp4 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp4[0], regexHT[pattern].ToString ());
 								lexemeModel.AppendValues (temp4[1], "NOOB");
 								break;
 							case "Standard Output":
-								if (this.checkMLC ())
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
 									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
+									break;
+								
 								String[] temp5 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp5 [0], regexHT [pattern].ToString ());
 								for (int i = 1; i < temp5.Length; i++) {
@@ -142,12 +193,21 @@ namespace Milestone_1
 							case "N-Arity Boolean OR":
 							case "Equality":
 							case "Inequality":
-								if (this.checkMLC ()) break;
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
+									break;
 								lexemeModel.AppendValues ("IT", "Implicit Variable");
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								break;
 							case "NOOB":
-								if (this.checkMLC ())
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
 									break;
 								int counter = 0;
 								foreach (String reserved in reservedHT.Keys) {
@@ -163,7 +223,12 @@ namespace Milestone_1
 									continue;
 								break;
 							default:
-								if (this.checkMLC ()) break;
+								// if a single line comment is declared before hand
+								if (this.checkSLC ())
+									break;
+								// if a multi-line comment is declared before hand
+								if (this.checkMLC ()) 
+									break;
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								break;
 							}
@@ -171,11 +236,35 @@ namespace Milestone_1
 							break;
 						}
 					}
-					if (this.checkMLC ()) continue;
+					if (this.checkSLC ())
+						continue;
+
+					if (this.checkMLC ()) 
+						continue;
+				}
+				// add BTW comment string here
+				if (this.checkSLC ()) {
+					if (commentString.Trim ().Length != 0)
+						lexemeModel.AppendValues (commentString.Trim (), "Comment String");
+					delimiterStack.Pop (); 
+					commentString = "";
 				}
 			}
 		}
-	
+
+		// if a "BTW" is detected, this will catch all incoming words until the whole line is read
+		private Boolean checkSLC ()
+		{
+			if (delimiterStack.Count > 0) {
+				if (delimiterStack.Peek ().ToString () == "slc") {
+					commentString = String.Concat (commentString, " ", current);
+					current = null;
+					return true;
+				}
+			}
+			return false;
+		}
+
 		// if an "OBTW" is detected, this will catch all incoming inputs until "TLDR"
 		private Boolean checkMLC ()
 		{

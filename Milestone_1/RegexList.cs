@@ -117,7 +117,7 @@ namespace Milestone_1
 			genericHT.Add (@"^KTHXBYE$", "End of Code"); // m1 done
 
 			// comments
-			genericHT.Add (@"^BTW .*", "Single Line Comment"); // m1 done
+			genericHT.Add (@"^BTW$", "Single Line Comment"); // m1 done
 			genericHT.Add (@"^OBTW$", "Start of Block Comment"); // m1 done
 			genericHT.Add (@"^TLDR$", "End of Block Comment"); // m1 done
 
