@@ -8,7 +8,7 @@ namespace Milestone_1
 	public class SyntaxAnalyzer
 	{
 		private Gtk.ListStore symbolTableModel;
-		private Hashtable regexList;
+		private Hashtable iHasAHT;
 		private ArrayList variableList;
 		private String[] codeInput;
 		private Gtk.Window theWindow;
@@ -18,8 +18,8 @@ namespace Milestone_1
 
 		public SyntaxAnalyzer (String[] codeInput, Gtk.Window theWindow, Gtk.TextView theConsole)
 		{
-			Milestone_1.RegexList regex = new Milestone_1.RegexList ();
-			regexList = regex.initSyntaxHT ();
+			Milestone_1.RegexList getHas = new Milestone_1.RegexList ();
+			iHasAHT = getHas.initVarHT ();
 
 			this.symbolTableModel = new Gtk.ListStore (typeof(String), typeof(String), typeof(String));
 			this.codeInput = codeInput;
@@ -47,11 +47,33 @@ namespace Milestone_1
 
 			// go through all gimmeh
 			this.allGimmeh ();
+
+			// all arithmetic
+			this.allMath ();
+
+			// all if-else
+			this.ifElse ();
+
+
+
 		}
 
 		public Gtk.ListStore getSymbolModel ()
 		{
 			return this.symbolTableModel;
+		}
+
+		private void allMath ()
+		{
+			foreach (String line in codeInput) {
+
+			}
+		}
+
+
+		private void ifElse ()
+		{
+			
 		}
 
 		private void allGimmeh ()
@@ -60,7 +82,7 @@ namespace Milestone_1
 				if (Regex.IsMatch (line, @"^GIMMEH [a-zA-Z][a-zA-Z0-9_]*$")) {
 					current = line.Split (space_del);
 					if (current.Length == 2) {
-						if (this.checkIfVarExists (current[1])) {
+						if (this.checkIfVarExists (current [1])) {
 							String consoleText = this.theConsole.Buffer.Text;
 							if (consoleText == "") {
 								consoleText = String.Concat (consoleText, "GIMMEH ", current [1].Trim ().ToString (), ": ");
@@ -69,11 +91,13 @@ namespace Milestone_1
 							}
 							this.theConsole.Buffer.Text = consoleText;
 							// set consoleTextView as editable
+							this.theConsole.Editable = true;
+							this.theConsole.Buffer.PlaceCursor (this.theConsole.Buffer.EndIter);
 							// get the last line of the buffer
 							consoleText = this.theConsole.Buffer.Text;
 							char[] new_line = { '\n' };
 							String[] temp = consoleText.Split (new_line);
-							String inputLine = temp[temp.Length-1];
+							String inputLine = temp [temp.Length - 1];
 							// get input
 							temp = inputLine.Split (space_del);
 							// this is a string input
@@ -84,8 +108,10 @@ namespace Milestone_1
 								}
 								this.alterValue (current [1], input.Trim ());
 							} else {
-								this.alterValue (current[1], temp[2].Trim ());
+								this.alterValue (current [1], temp [2].Trim ());
 							}
+						} else {
+							this.errorMessage ("NO VAR");
 						}
 					} else {
 						this.errorMessage ("TOO MUCH SENPAI~~");
@@ -178,16 +204,16 @@ namespace Milestone_1
 		private void allInits ()
 		{
 			foreach (String line in codeInput) {
-				foreach (String pattern in regexList.Keys) {
+				foreach (String pattern in iHasAHT.Keys) {
 					if (Regex.IsMatch (line, pattern)) {
-						switch (regexList [pattern].ToString ()) {
+						switch (iHasAHT [pattern].ToString ()) {
 						case "NOOB":
 							current = line.Split (space_del);	
 							if (this.checkIfAlreadyDeclared (current [3]))
 								this.variableList.Add (current [3]);
 							else
 								break;
-							symbolTableModel.AppendValues (regexList[pattern], current[3], "");
+							symbolTableModel.AppendValues (iHasAHT[pattern], current[3], "");
 							break;
 						default:
 							current = line.Split (space_del);
@@ -195,7 +221,7 @@ namespace Milestone_1
 								this.variableList.Add (current [3]);
 							else
 								break;
-							symbolTableModel.AppendValues (regexList[pattern], current[3],  current[5]);
+							symbolTableModel.AppendValues (iHasAHT[pattern], current[3],  current[5]);
 							break;
 						}
 					}
