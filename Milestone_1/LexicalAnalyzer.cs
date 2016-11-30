@@ -31,6 +31,7 @@ namespace Milestone_1
 				// for each word in line
 				foreach (String word in brokenLine) 
 				{
+					// always trim whitespace
 					if (current == null) {
 						current = word.Trim();
 					} 
@@ -46,30 +47,71 @@ namespace Milestone_1
 						if (Regex.IsMatch (current, pattern)) {
 							switch (regexHT [pattern].ToString ()) {
 							case "Single Line Comment":
-								if (this.checkMLC ()) break;
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
+								if (this.checkMLC ())
+									break;
+								// use space as delimiter to split the string
 								String[] comment = current.Split (space_delimiter);
-								lexemeModel.AppendValues (comment [0], regexHT [pattern].ToString ());
-								lexemeModel.AppendValues (comment [1], "Comment String");
+								// store the keyword
+								//lexemeModel.AppendValues (comment [0], regexHT [pattern].ToString ());
+								// derive the whole comment string
+								//String tempComment = ""; // temporary string for comment
+								//for (int i = 1; i < comment.Length; i++) {
+								//	tempComment = String.Concat (tempComment, " ", comment[i]);
+								//}
+								// append whole comment string
+								//lexemeModel.AppendValues (tempComment, "Comment String");
 								break;
 							case "Start of Block Comment":
-								if (this.checkMLC ()) break;
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
+								if (this.checkMLC ())
+									break;
+								
 								delimiterStack.Push ("sbc");
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								break;
 							case "End of Block Comment":
-								lexemeModel.AppendValues (commentString, "Comment Content");
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								if (commentString.Trim().Length != 0)
+									lexemeModel.AppendValues (commentString, "Comment Content");
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								delimiterStack.Pop ();
 								commentString = null;
 								break;
 							case "Variable Declaration":
-								if (this.checkMLC ()) break;
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
+								if (this.checkMLC ())
+									break;
+
 								lexemeModel.AppendValues ("I HAS A", regexHT[pattern].ToString ());
 								String[] temp = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp[3], "NOOB");
 								break;
 							case "YARN":
-								if (this.checkMLC ()) break;
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
+								if (this.checkMLC ())
+									break;
+
+
 								char[] quote = { '"' };
 								current = current.TrimStart (quote);
 								current = current.TrimEnd (quote);
@@ -78,7 +120,15 @@ namespace Milestone_1
 								lexemeModel.AppendValues ("\"", "String Delimiter");
 								break;
 							case "String Concatenation":
-								if (this.checkMLC ()) break;
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
+								if (this.checkMLC ())
+									break;
+
+
 								String[] temp3 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp3 [0], regexHT[pattern].ToString ());
 								for (int i = 1; i < temp3.Length; i++) {
@@ -101,15 +151,27 @@ namespace Milestone_1
 									}
 								}
 								break;
-							case "Standard Input":
-								if (this.checkMLC ()) break;
+							case "Standard Input":// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
+								if (this.checkMLC ())
+									break;
+
 								String[] temp4 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp4[0], regexHT[pattern].ToString ());
 								lexemeModel.AppendValues (temp4[1], "NOOB");
 								break;
 							case "Standard Output":
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
 								if (this.checkMLC ())
 									break;
+								
 								String[] temp5 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp5 [0], regexHT [pattern].ToString ());
 								for (int i = 1; i < temp5.Length; i++) {
@@ -142,13 +204,26 @@ namespace Milestone_1
 							case "N-Arity Boolean OR":
 							case "Equality":
 							case "Inequality":
-								if (this.checkMLC ()) break;
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
+								if (this.checkMLC ())
+									break;
+								
 								lexemeModel.AppendValues ("IT", "Implicit Variable");
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								break;
 							case "NOOB":
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
 								if (this.checkMLC ())
 									break;
+								
 								int counter = 0;
 								foreach (String reserved in reservedHT.Keys) {
 									if (Regex.IsMatch (current, reserved)) {
@@ -163,7 +238,14 @@ namespace Milestone_1
 									continue;
 								break;
 							default:
-								if (this.checkMLC ()) break;
+								// this will check if there is a single line comment declared previously
+								if (this.checkSLC ())
+									break;
+
+								// this will check if there are multiline comments declared previously
+								if (this.checkMLC ())
+									break;
+								
 								lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
 								break;
 							}
@@ -171,18 +253,44 @@ namespace Milestone_1
 							break;
 						}
 					}
-					if (this.checkMLC ()) continue;
+					if (this.checkMLC ()) 
+						continue;
+					if (this.checkSLC ())
+						continue;
+				}
+
+				// after reading the whole line, check if that line has single line comment
+				if (delimiterStack.Count > 0) {
+					if (delimiterStack.Peek ().ToString () == "slc") {
+						delimiterStack.Pop ();
+						if (commentString.Trim().Length != 0)
+							lexemeModel.AppendValues (commentString, "Comment Content");
+						commentString = null;
+					}
 				}
 			}
 		}
 	
+		// if a "BTW" is detected, this will catch all incoming outputs until the whole line is read
+		private Boolean checkSLC ()
+		{
+			if (delimiterStack.Count > 0) {
+				if (delimiterStack.Peek ().ToString () == "slc") {
+					commentString = String.Concat (commentString, " ", current);
+					current = null;
+					return true;
+				}
+			}
+			return false;
+		}
+
 		// if an "OBTW" is detected, this will catch all incoming inputs until "TLDR"
 		private Boolean checkMLC ()
 		{
 			if (delimiterStack.Count > 0) {
 				if (delimiterStack.Peek ().ToString () == "sbc") {
 					commentString = String.Concat (commentString, " ", current);
-					Console.WriteLine ("current comment string - {0}", commentString); 
+					Console.WriteLine ("current comment string - {0} - length - {1}", commentString.Trim(), commentString.Trim().Length); 
 					current = null;
 					return true;
 				}

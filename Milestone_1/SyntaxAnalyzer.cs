@@ -48,12 +48,8 @@ namespace Milestone_1
 			// go through all gimmeh
 			this.allGimmeh ();
 
-			// all arithmetic
-			this.allMath ();
-
-			// all if-else
-			this.ifElse ();
-
+			// all smoosh
+			this.allSmoosh ();
 
 
 		}
@@ -63,15 +59,7 @@ namespace Milestone_1
 			return this.symbolTableModel;
 		}
 
-		private void allMath ()
-		{
-			foreach (String line in codeInput) {
-
-			}
-		}
-
-
-		private void ifElse ()
+		private void allSmoosh ()
 		{
 			
 		}
