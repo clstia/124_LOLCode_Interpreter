@@ -252,7 +252,7 @@ public partial class MainWindow
 		this.consoleTextView.CanFocus = true;
 		this.consoleTextView.Name = "consoleTextView";
 		this.consoleTextView.Editable = false;
-		this.consoleTextView.CursorVisible = false;
+		this.consoleTextView.AcceptsTab = false;
 		this.consoleTextView.WrapMode = ((global::Gtk.WrapMode)(2));
 		this.GtkScrolledWindow3.Add (this.consoleTextView);
 		this.GtkAlignment.Add (this.GtkScrolledWindow3);

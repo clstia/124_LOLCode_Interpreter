@@ -90,4 +90,5 @@ public partial class MainWindow: Gtk.Window
 		analyzeSyntax.syntaxAnalyzer ();
 		symbolTreeView.Model = analyzeSyntax.getSymbolModel ();
 	}
+
 }
