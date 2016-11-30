@@ -28,7 +28,7 @@ namespace Milestone_1
 			this.variableList = new ArrayList ();
 		}
 
-		public void syntaxAnalyzer ()
+		public void analyzeSyntax ()
 		{
 			/*// check HAI
 			if (!Regex.IsMatch (codeInput [0], @"^HAI$")) {
@@ -40,10 +40,10 @@ namespace Milestone_1
 			}*/
 
 			// go through all initializations
-			this.allInits ();
+			//this.allInits ();
 
 			// go through all visible
-			//this.allVisible ();
+			this.allVisible ();
 
 			// go through all gimmeh
 			//this.allGimmeh ();

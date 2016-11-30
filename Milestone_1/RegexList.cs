@@ -12,6 +12,27 @@ namespace Milestone_1
 			
 		}
 
+		public Hashtable initSyntaxHT ()
+		{
+			genericHT = new Hashtable ();
+			genericHT.Add (@"^VISIBLE", "Standard Output"); // m1 done
+			genericHT.Add (@"^I HAS A", "Variable Declaration");
+			genericHT.Add (@"^[a-zA-Z][a-zA-Z0-9_]* R .*$", "Assignment Statement");
+			genericHT.Add (@"^(SUM\ OF|PRODUKT\ OF|QUOSHUNT\ OF|DIFF\ OF|MOD\ OF)", "Arithmetic");
+			genericHT.Add (@"^BIGGR OF", "Compare"); // m1 done. need to detect arguments
+			genericHT.Add (@"^SMALLR OF", "Compare"); // m1 done . need to detect arguments
+			genericHT.Add (@"^BOTH OF", "Boolean"); // m1 done . need to detect arguments
+			genericHT.Add (@"^EITHER OF", "Boolean"); // m1 done . need to detect arguments
+			genericHT.Add (@"^WON OF", "Boolean"); // m1 done . need to detect arguments
+			genericHT.Add (@"^NOT", "Boolean"); // m1 done . need to detect arguments
+			genericHT.Add (@"^ANY OF", "Boolean"); // m1 done . need to detect arguments
+			genericHT.Add (@"^ALL OF", "Boolean"); // m1 done . need to detect arguments
+			genericHT.Add (@"^BOTH SAEM", "Compare"); // m1 done . need to detect arguments
+			genericHT.Add (@"^DIFFRINT", "Compare");  // m1 done . need to detect arguments
+			genericHT.Add (@"^SMOOSH", "String Concatenation"); 
+			return genericHT;
+		}
+
 		public Hashtable initArithmetic ()
 		{
 			genericHT = new Hashtable ();
@@ -27,7 +48,7 @@ namespace Milestone_1
 			genericHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ (WIN|FAIL)", "TROOF");
 			genericHT.Add ("^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ \".*\"$", "YARN");
 			genericHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ (-)?[0-9]+$", "NUMBR");
-			genericHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ (-)?[0-9]+\.[0-9]+$", "NUMBAR"); 
+			genericHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]* ITZ (-)?[0-9]+\.[0-9]+$", "NUMBAR");
 			// add init with expression
 
 			return genericHT;
@@ -78,6 +99,7 @@ namespace Milestone_1
 			genericHT.Add (@"^WON$", "Reserved");
 			genericHT.Add (@"^SAEM$", "Reserved");
 			genericHT.Add (@"^DIFFRINT$", "Reserved");
+			genericHT.Add (@"^MKAY$", "Reserved");
 
 			return genericHT;
 		}
@@ -109,6 +131,7 @@ namespace Milestone_1
 			genericHT.Add (@"^NOT$", "Boolean NOT"); // m1 done . need to detect arguments
 			genericHT.Add (@"^ANY OF$", "N-Arity Boolean OR"); // m1 done . need to detect arguments
 			genericHT.Add (@"^ALL OF$", "N-Arity Boolean AND"); // m1 done . need to detect arguments
+			genericHT.Add (@"^MKAY$", "N-Arity Boolean Terminator"); 
 			genericHT.Add (@"^BOTH SAEM$", "Equality"); // m1 done . need to detect arguments
 			genericHT.Add (@"^DIFFRINT$", "Inequality");  // m1 done . need to detect arguments
 
@@ -123,7 +146,7 @@ namespace Milestone_1
 
 			// standard input and output
 			genericHT.Add (@"^VISIBLE", "Standard Output"); // m1 done
-			genericHT.Add (@"^GIMMEH [a-zA-Z][a-zA-Z0-9_]*", "Standard Input"); // m1 done
+			genericHT.Add (@"^GIMMEH [a-zA-Z][a-zA-Z0-9_]*$", "Standard Input"); // m1 done
 
 			// variable operations
 			genericHT.Add (@"^I HAS A [a-zA-Z][a-zA-Z0-9_]*$", "Variable Declaration"); // m1 done 

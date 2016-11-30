@@ -38,8 +38,6 @@ namespace Milestone_1
 						current = String.Concat (current, " ", word).Trim();
 					}
 
-					Console.WriteLine (current); 
-
 					// compare current statement to regex list
 					foreach (String pattern in regexHT.Keys) 
 					{
@@ -272,7 +270,6 @@ namespace Milestone_1
 			if (delimiterStack.Count > 0) {
 				if (delimiterStack.Peek ().ToString () == "sbc") {
 					commentString = String.Concat (commentString, " ", current);
-					Console.WriteLine ("current comment string - {0}", commentString); 
 					current = null;
 					return true;
 				}
