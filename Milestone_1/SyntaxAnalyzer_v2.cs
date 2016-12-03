@@ -17,6 +17,7 @@ namespace Milestone_1
 		// Syntax Analyzer Essentials
 		private String[] codeInput; // holds the whole source code
 		private char[] space_del = { ' ' }; // space delimiter
+		public Boolean inputSent = false;
 
 		// Constructor
 		public SyntaxAnalyzer_v2 (String[] codeInput, Window theParent, TextView theConsole, Entry theInput)
@@ -659,10 +660,15 @@ namespace Milestone_1
 			}
 		}
 
+		public Boolean resume ()
+		{
+			return true;
+		}
+
 		// procedure for input
 		private void gimmehFunction (String[] inputArguments)
 		{
-			Console.WriteLine ("");
+			
 		}
 
 		// procedure for printing

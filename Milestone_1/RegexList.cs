@@ -17,7 +17,7 @@ namespace Milestone_1
 			genericHT = new Hashtable ();
 			genericHT.Add (@"^VISIBLE", "Standard Output"); // m1 done
 			genericHT.Add (@"^I HAS A", "Variable Declaration");
-			genericHT.Add (@"^GIMMEH$", "Standard Input"); 
+			genericHT.Add (@"^GIMMEH [a-zA-Z][a-zA-Z0-9_]*$", "Standard Input"); 
 			genericHT.Add (@"^[a-zA-Z][a-zA-Z0-9_]* R .*$", "Assignment Statement");
 			genericHT.Add (@"^(SUM\ OF|PRODUKT\ OF|QUOSHUNT\ OF|DIFF\ OF|MOD\ OF)", "Arithmetic");
 			genericHT.Add (@"^BIGGR OF", "Compare"); // m1 done. need to detect arguments

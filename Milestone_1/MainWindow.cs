@@ -6,6 +6,7 @@ public partial class MainWindow: Gtk.Window
 {
 	private String fileName, prevFileName = "";
 	private StreamReader sr;
+	private Milestone_1.SyntaxAnalyzer_v2 syntaxAnalyzer;
 
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
@@ -88,7 +89,7 @@ public partial class MainWindow: Gtk.Window
 		lexemeTreeView.Model = fillLexemes.getModel ();
 
 		//Milestone_1.SyntaxAnalyzer syntaxAnalyzer = new Milestone_1.SyntaxAnalyzer (codeTextView.Buffer.Text.Split (delimiter), this, this.consoleTextView);
-		Milestone_1.SyntaxAnalyzer_v2 syntaxAnalyzer = new Milestone_1.SyntaxAnalyzer_v2 (codeTextView.Buffer.Text.Split (delimiter), this, this.consoleTextView, this.inputEntry);
+		syntaxAnalyzer = new Milestone_1.SyntaxAnalyzer_v2 (codeTextView.Buffer.Text.Split (delimiter), this, this.consoleTextView, this.inputEntry);
 		syntaxAnalyzer.analyzeSyntax ();
 		symbolTreeView.Model = syntaxAnalyzer.getSymbolModel ();
 	}
