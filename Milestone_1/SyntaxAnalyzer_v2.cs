@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections;
 using System.Text.RegularExpressions;
 using Gtk;
@@ -11,18 +12,20 @@ namespace Milestone_1
 		private ListStore symbolTableModel; // symbol table model
 		private TextView theConsole; // refers to the console in the main window
 		private Window theParent; // refers to the parent window
+		private Entry theInput; // refers to the input entry box
 
 		// Syntax Analyzer Essentials
 		private String[] codeInput; // holds the whole source code
 		private char[] space_del = { ' ' }; // space delimiter
 
 		// Constructor
-		public SyntaxAnalyzer_v2 (String[] codeInput, Window theParent, TextView theConsole)
+		public SyntaxAnalyzer_v2 (String[] codeInput, Window theParent, TextView theConsole, Entry theInput)
 		{
 			this.codeInput = codeInput;
 			this.symbolTableModel = new ListStore (typeof(String), typeof(String), typeof(String));
 			this.theParent = theParent;
 			this.theConsole = theConsole;
+			this.theInput = theInput;
 		}
 
 		public void analyzeSyntax ()
@@ -659,7 +662,7 @@ namespace Milestone_1
 		// procedure for input
 		private void gimmehFunction (String[] inputArguments)
 		{
-
+			Console.WriteLine ("");
 		}
 
 		// procedure for printing

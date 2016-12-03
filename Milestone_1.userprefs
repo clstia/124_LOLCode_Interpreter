@@ -1,26 +1,13 @@
 ﻿<Properties StartupItem="Milestone_1/Milestone_1.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Milestone_1/SyntaxAnalyzer_v2.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Milestone_1/MainWindow.cs">
     <Files>
       <File FileName="Milestone_1/Program.cs" Line="1" Column="1" />
-      <File FileName="Milestone_1/MainWindow.cs" Line="91" Column="3" />
-      <File FileName="Milestone_1/RegexList.cs" Line="19" Column="6" />
-      <File FileName="Milestone_1/LexicalAnalyzer.cs" Line="38" Column="27" />
-      <File FileName="Milestone_1/SyntaxAnalyzer_v2.cs" Line="97" Column="4" />
-      <File FileName="Regex Toolkit" />
-      <File FileName="Milestone_1/SyntaxAnalyzer.cs" Line="169" Column="10" />
+      <File FileName="Milestone_1/MainWindow.cs" Line="1" Column="1" />
+      <File FileName="Milestone_1/RegexList.cs" Line="1" Column="1" />
+      <File FileName="Milestone_1/SyntaxAnalyzer_v2.cs" Line="209" Column="7" />
+      <File FileName="Milestone_1/SyntaxAnalyzer.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Milestone_1" expanded="True">
-            <Node name="Milestone_1" expanded="True">
-              <Node name="SyntaxAnalyzer_v2.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

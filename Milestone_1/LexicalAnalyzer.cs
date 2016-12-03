@@ -90,7 +90,7 @@ namespace Milestone_1
 								lexemeModel.AppendValues ("I HAS A", regexHT[pattern].ToString ());
 								// append variable name
 								String[] temp = current.Split (space_delimiter);
-								lexemeModel.AppendValues (temp[3], "NOOB");
+								lexemeModel.AppendValues (temp[3], "Variable Name");
 								break;
 							case "YARN":
 								// if a single line comment is declared before hand
@@ -149,7 +149,7 @@ namespace Milestone_1
 								
 								String[] temp4 = current.Split (space_delimiter);
 								lexemeModel.AppendValues (temp4[0], regexHT[pattern].ToString ());
-								lexemeModel.AppendValues (temp4[1], "NOOB");
+								lexemeModel.AppendValues (temp4[1], "Variable Name");
 								break;
 							case "Standard Output":
 								// if a single line comment is declared before hand
@@ -217,7 +217,7 @@ namespace Milestone_1
 									}
 								}
 								if (counter == reservedHT.Count)
-									lexemeModel.AppendValues (current, regexHT [pattern].ToString ());
+									lexemeModel.AppendValues (current, "Variable Name");
 								else
 									continue;
 								break;
